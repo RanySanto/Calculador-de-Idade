@@ -22,31 +22,32 @@ const inpDay = document.getElementById("date-day")
 const inpMonth = document.getElementById("date-month")
 const inpYear = document.getElementById("date-year")
 
+let error = document.getElementById("error")
 
 submit.addEventListener('click', function(){
     const day = inpDay.value;
     const month = inpMonth.value;
     const year = inpYear.value;
     if(day == 0 | month == 0 | year == 0){
-        console.log("Input can't be null")
+        error.textContent = "Input can't be null"
     }
     else if(day > 31 | day < 1){
-        console.log("Day need to be a number between 1-31")
+        error.textContent = "Day need to be a number between 1-31"
     }
     else if(month > 12 | month < 1){
-        console.log("Month need to be a number between 1-12")
+        error.textContent = "Month need to be a number between 1-12"
     }
     else if(year > 2024){
-        console.log("The birth year can't be in the future")
+        error.textContent = "The birth year can't be in the future"
     }
     else if(month == 4 | 6 | 9 | 11 && day > 30){
-        console.log("This month can't have more than 30 days")
+        error.textContent = "This month can't have more than 30 days"
     }
     else if(month == 2 && day > 29){
-        console.log("February doesn't have then 28/29 days")
+        error.textContent = "February doesn't have then 28/29 days"
     }
     else if(month == 2 && day > 28 && year % 4 !== 0){
-        console.log("If isn't a leap year, february can't have more than 28 days")
+        error.textContent = "If isn't a leap year, february can't have more than 28 days"
     }
     else {
         transformarIdade(day, month, year);
